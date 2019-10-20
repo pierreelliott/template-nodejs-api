@@ -1,0 +1,33 @@
+{
+  "name": "template-nodejs-api",
+  "version": "1.0.0",
+  "description": "Template for a Nodejs API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"No tests specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pierreelliott/template-nodejs-api.git"
+  },
+  "keywords": [
+    "template",
+    "nodejs",
+    "api"
+  ],
+  "author": "pierreelliott",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pierreelliott/template-nodejs-api/issues"
+  },
+  "homepage": "https://github.com/pierreelliott/template-nodejs-api#readme",
+  "devDependencies": {
+    "nodemon": "^1.19.3"
+  },
+  "dependencies": {
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "winston": "^3.2.1"
+  }
+}
