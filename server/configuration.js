@@ -1,13 +1,13 @@
 import express from 'express';
-import configFile from '/config/config';
-import configFileDev from '/config/config.dev';
+import configFile from '../config/config';
+import configFileDev from '../config/config.dev';
 
 // TODO Determine which config file is used based on arguments from console startup
 const config = false ? configFile : configFileDev;
 
 /**
  * Available through the entire server with `import { APP } from '/server/configuration';`
- * @type {app} Express Application
+ * @type {express} Express Application
  */
 export const APP = express();
 
@@ -30,3 +30,5 @@ export const ENV = config.env ? config.env.toString().toUpperCase() : "DEV";
 export const BASEDOMAIN = config.domain || "localhost";
 
 export const PORT = config.port || "3000";
+
+export const SERVICE_PATH = "/services";

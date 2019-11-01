@@ -12,7 +12,7 @@ const consoleLog = new winston.transports.Console();
 
 export const requestLogger = createRequestLogger([consoleLog]);
 export const errorLogger = createErrorLogger([consoleLog]);
-export const LOGGER =
+export const LOGGER = {};
 
 function createRequestLogger(transports) {
     const requestLogger = winston.createLogger({

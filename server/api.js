@@ -1,4 +1,33 @@
-import { APP, LOGGER } from './configuration'
+import {APP, LOGGER, SERVICE_PATH} from './configuration';
+import * as fs from "fs";
+
+export function registerServices() {
+    retrieveServices().then((services) => {
+        services.forEach((service) => {
+            require("../services/"+ service); // Initialize it
+        });
+        console.log("All services registered.");
+    }).catch((error) => {
+        console.error(error);
+    });
+}
+
+function retrieveServices() {
+    return new Promise((resolve, reject) => {
+        fs.readdir("." + SERVICE_PATH, (error, items) => {
+            if(error) {
+                console.error("Error while registering the services.");
+                reject(error);
+            } else {
+                const services = items.filter((service) => service.endsWith(".js"));
+                resolve(services);
+            }
+        })
+    });
+}
+
+
+// FIXME Shouldn't be necessary anymore
 
 /**
  * Register services on the API
@@ -132,7 +161,7 @@ function filter(req, res) {
 };
 
 // Méthode qui lance l'enregistrement des méthodes de l'API en se basant sur le tableau methods
-(function(methods) {
+/*(function(methods) {
     for (var i = 0; i < methods.length; i++) {
         (function() {
             var index = i;
@@ -143,3 +172,4 @@ function filter(req, res) {
         })();
     }
 })(['get', 'post', 'put', 'delete']);
+*/
